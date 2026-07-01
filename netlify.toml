@@ -1,6 +1,15 @@
 [build]
-  publish = "frontend"
+  base = "frontend"
+  publish = "."
   command = ""
+
+# Prevent Netlify from auto-detecting/installing any package manager
+# files (this repo's root requirements.txt is for the Python backend,
+# which is deployed separately to Alibaba Cloud Function Compute -
+# Netlify only serves the static frontend/ folder).
+[build.environment]
+  NETLIFY_SKIP_PYTHON = "true"
+  NETLIFY_USE_YARN = "false"
 
 [[headers]]
   for = "/*"
