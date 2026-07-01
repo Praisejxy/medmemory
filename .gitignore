@@ -1,0 +1,24 @@
+# Secrets — never commit
+.env
+*.pem
+*.key
+
+# Local data (SQLite + Chroma persistence)
+*.db
+chroma_store/
+/tmp/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
+
+# Node (frontend tooling, if any)
+node_modules/
+dist/
+.netlify/
+
+# OS
+.DS_Store
