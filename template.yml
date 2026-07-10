@@ -1,0 +1,26 @@
+ROSTemplateFormatVersion: '2015-09-01'
+Transform: 'Aliyun::Serverless-2018-04-03'
+Resources:
+  medmemory-service:
+    Type: 'Aliyun::Serverless::Service'
+    Properties:
+      Description: 'MedMemory backend - Global AI Hackathon Series with Qwen Cloud, Track 1'
+    medmemory-function:
+      Type: 'Aliyun::Serverless::Function'
+      Properties:
+        Runtime: custom
+        CodeUri: './'
+        Handler: not-used
+        CAPort: 9000
+        MemorySize: 512
+        Timeout: 30
+        EnvironmentVariables:
+          QWEN_MOCK_MODE: 'true'
+          QWEN_MODEL: 'qwen-plus'
+          QWEN_API_BASE: 'https://dashscope-intl.aliyuncs.com/compatible-mode/v1'
+      Events:
+        httpTrigger:
+          Type: HTTP
+          Properties:
+            AuthType: ANONYMOUS
+            Methods: ['GET', 'POST', 'OPTIONS']

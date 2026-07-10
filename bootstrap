@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -e
+export PYTHONPATH="$(pwd)/vendor:$PYTHONPATH"
+export PORT=9000
+exec python3 -m backend.local_server
